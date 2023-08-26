@@ -7,3 +7,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+app:
+  security:
+    salt-rounds: 12
