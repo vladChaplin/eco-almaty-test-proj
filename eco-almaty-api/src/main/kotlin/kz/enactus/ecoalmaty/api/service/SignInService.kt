@@ -13,6 +13,7 @@ class SignInService(
     private val userRepository: UserRepository,
     private val sessionService: SessionService,
     private val passwordEncoder: PasswordEncoder,
+    private val loginLogService: LoginLogService,
 ) {
 
     fun findByEmail(signInRequest: SignInRequest): Session {
@@ -22,7 +23,7 @@ class SignInService(
             throw WrongCredentialsException()
         }
 
-        return sessionService.generateForUser(user.id!!)
+        return loginLogService.save(user.id!!).let { sessionService.generateForUser(it.userId) }
     }
 
 }

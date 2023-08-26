@@ -67,6 +67,14 @@ CREATE TABLE t_exception_log
     PRIMARY KEY (id)
 );
 
+CREATE TABLE t_login_log
+(
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    user_id   BIGINT                NOT NULL,
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+);
+
 -- #################### VIEWS ####################
 
 CREATE OR REPLACE VIEW vw_users_roles AS
