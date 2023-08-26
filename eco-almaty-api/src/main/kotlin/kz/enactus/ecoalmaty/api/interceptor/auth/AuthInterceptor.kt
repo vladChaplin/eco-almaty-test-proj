@@ -5,8 +5,8 @@ import jakarta.servlet.http.HttpServletResponse
 import kz.enactus.ecoalmaty.api.repository.RoleRepository
 import kz.enactus.ecoalmaty.api.repository.UserRepository
 import kz.enactus.ecoalmaty.api.service.SessionService
-import kz.enactus.ecobox.api.exception.SessionHasExpiredException
-import kz.enactus.ecobox.api.exception.UserNotFoundException
+import kz.enactus.ecoalmaty.api.exception.SessionHasExpiredException
+import kz.enactus.ecoalmaty.api.exception.UserNotFoundException
 import org.springframework.web.servlet.HandlerInterceptor
 import java.time.LocalDateTime
 

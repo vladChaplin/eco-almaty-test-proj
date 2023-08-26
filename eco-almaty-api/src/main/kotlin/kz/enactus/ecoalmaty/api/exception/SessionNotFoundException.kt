@@ -1,3 +1,3 @@
-package kz.enactus.ecobox.api.exception
+package kz.enactus.ecoalmaty.api.exception
 
 class SessionNotFoundException : RuntimeException("Session not found.")

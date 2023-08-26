@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional
 import kz.enactus.ecoalmaty.api.model.entity.Session
 import kz.enactus.ecoalmaty.api.repository.SessionRepository
 import kz.enactus.ecoalmaty.api.utils.token.TokenGenerator
-import kz.enactus.ecobox.api.exception.SessionNotFoundException
+import kz.enactus.ecoalmaty.api.exception.SessionNotFoundException
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
