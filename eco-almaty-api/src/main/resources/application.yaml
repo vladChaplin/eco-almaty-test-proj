@@ -7,6 +7,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 25
+    username: eco.almaty.noreply@gmail.com
+    password: xkoukrglexkowmbh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 app:
   security:
     salt-rounds: 12

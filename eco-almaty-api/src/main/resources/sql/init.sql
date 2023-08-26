@@ -58,6 +58,14 @@ CREATE TABLE t_sessions
     FOREIGN KEY (user_id) REFERENCES t_users (id)
 );
 
+CREATE TABLE t_mail_verification
+(
+    id    BIGINT AUTO_INCREMENT NOT NULL,
+    email VARCHAR(120)          NOT NULL,
+    code  VARCHAR(6)            NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE t_exception_log
 (
     id        BIGINT AUTO_INCREMENT NOT NULL,
