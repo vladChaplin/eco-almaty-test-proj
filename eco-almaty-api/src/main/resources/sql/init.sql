@@ -58,6 +58,15 @@ CREATE TABLE t_sessions
     FOREIGN KEY (user_id) REFERENCES t_users (id)
 );
 
+CREATE TABLE t_exception_log
+(
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    cause     VARCHAR(150)          NOT NULL,
+    message   VARCHAR(2048)         NOT NULL,
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+);
+
 -- #################### VIEWS ####################
 
 CREATE OR REPLACE VIEW vw_users_roles AS

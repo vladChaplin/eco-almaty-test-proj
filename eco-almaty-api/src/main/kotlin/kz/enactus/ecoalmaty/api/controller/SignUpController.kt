@@ -17,7 +17,7 @@ class SignUpController(
 
     @PostMapping
     fun signUpIndividual(@RequestBody request: SignUpRequest): MessagedResponse<SignUpResponse> {
-        return signUpService.signUp(request).let(MessagedResponse.Companion::ofBody)
+        return signUpService.signUp(request).let(MessagedResponse.Companion::of)
     }
 
 }

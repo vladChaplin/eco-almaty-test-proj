@@ -18,7 +18,7 @@ class RoleController(
         @RequestAttribute("user") user: User,
         @PathVariable userId: Long,
     ): MessagedResponse<List<Role>> {
-        return roleService.getUserRolesById(roles, user, userId).let(MessagedResponse.Companion::ofBody)
+        return roleService.getUserRolesById(roles, user, userId).let(MessagedResponse.Companion::of)
     }
 
 }

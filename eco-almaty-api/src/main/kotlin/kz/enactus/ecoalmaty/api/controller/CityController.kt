@@ -18,7 +18,7 @@ class CityController(
     fun getAll(@PathVariable countryId: Long): MessagedResponse<List<Country>> {
         return cityRepository.findByCountryId(countryId)
             .orElseThrow { throw RuntimeException("") }
-            .let(MessagedResponse.Companion::ofBody)
+            .let(MessagedResponse.Companion::of)
     }
 
 }

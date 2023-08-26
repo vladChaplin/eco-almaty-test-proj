@@ -17,7 +17,7 @@ class SignInController(
 
     @PostMapping
     fun signIn(@RequestBody signInRequest: SignInRequest): MessagedResponse<Session> {
-        return signInService.findByEmail(signInRequest).let(MessagedResponse.Companion::ofBody)
+        return signInService.findByEmail(signInRequest).let(MessagedResponse.Companion::of)
     }
 
 }

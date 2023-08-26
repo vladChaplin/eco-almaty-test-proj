@@ -15,7 +15,7 @@ class SignOutController(
 
     @PostMapping
     fun signOut(@RequestParam(required = true) token: String): MessagedResponse<Boolean> {
-        return signOutService.signOut(token).let(MessagedResponse.Companion::ofBody)
+        return signOutService.signOut(token).let(MessagedResponse.Companion::of)
     }
 
 }

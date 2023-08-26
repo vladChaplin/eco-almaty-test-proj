@@ -15,7 +15,7 @@ class CountryController(
 
     @GetMapping("/public")
     fun getAll(): MessagedResponse<List<Country>> {
-        return countryRepository.findAll().let(MessagedResponse.Companion::ofBody)
+        return countryRepository.findAll().let(MessagedResponse.Companion::of)
     }
 
 }

@@ -15,7 +15,7 @@ class UserController(
     fun getUserById(
         @PathVariable userId: Long,
     ): MessagedResponse<User> {
-        return userService.getById(userId).let(MessagedResponse.Companion::ofBody)
+        return userService.getById(userId).let(MessagedResponse.Companion::of)
     }
 
 }

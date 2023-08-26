@@ -7,9 +7,9 @@ class MessagedResponse<T>(
 
     companion object {
 
-        fun ofEmpty(message: String) = MessagedResponse(message = message, body = null)
+        fun empty(message: String) = MessagedResponse(message = message, body = null)
 
-        fun <T> ofBody(body: T) = MessagedResponse(body = body, message = null)
+        fun <T> of(body: T) = MessagedResponse(body = body, message = null)
 
     }
 
