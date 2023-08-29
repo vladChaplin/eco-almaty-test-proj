@@ -83,6 +83,17 @@ CREATE TABLE t_login_log
     PRIMARY KEY (id)
 );
 
+CREATE TABLE t_action_log
+(
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    user_id   BIGINT                NOT NULL,
+    action    VARCHAR(250)          NOT NULL,
+    endpoint  VARCHAR(250)          NOT NULL,
+    data      VARCHAR(2048),
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+);
+
 -- #################### VIEWS ####################
 
 CREATE OR REPLACE VIEW vw_users_roles AS

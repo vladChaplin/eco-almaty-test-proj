@@ -1,20 +1,10 @@
 # Мобильное приложение EcoAlmaty
 
-- Краткое описание
-- Цели и задачи
-- Требования
-- eco-almaty-android
-    - Активити
-- eco-almaty-api
-- eco-almaty-admin
-- eco-almaty-db
-
 ## Краткое описание
 
 **EcoAlmaty** — приложение, которое позволяет отслеживать уровень загрязненности города, отмечать новые точки
-загрязнения, а
-также отображать находящиеся радом мусорные баки. В приложении имеется общая лента, куда пользователи могут отправлять
-посты с фотографиями и комментировать чужие.
+загрязнения, а также отображать находящиеся радом мусорные баки. В приложении имеется общая лента, куда пользователи
+могут отправлять посты с фотографиями и комментировать чужие.
 
 ## Цели и задачи
 
@@ -108,6 +98,114 @@
 ### Профиль пользователя
 
 Содержит всю публичную информацию о пользователе. В самом верху располагается аватарка пользователя и под ней его имя.
-После разделительной горизонтальной черты идет дополнительная информация о пользователе: дата регистрация, количество 
-постов, комментариев (и прочее, нужно уточнение). После еще одной разделительной черты идут значки с различными 
+После разделительной горизонтальной черты идет дополнительная информация о пользователе: дата регистрация, количество
+постов, комментариев (и прочее, нужно уточнение). После еще одной разделительной черты идут значки с различными
 достижениями пользователя. Далее, всю остальную часть занимают раздел с постами и комментариями пользователя.
+
+## eco-almaty-api
+
+## eco-almaty-admin
+
+## eco-almaty-db
+
+Хранит в себе всю информацию о таблицах, вьшках, процедурах, пакетах и прочих данных, относящихся к БД.
+Вся информация рассортирована по одноименным папкам и используется при пересоздании сервера для быстрого развертывания.
+
+1. `t_countries` — хранит информацию о странах, в которых доступно приложение.
+    ```sql
+    id   BIGINT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100)          NOT NULL,
+    PRIMARY KEY (id)
+    ```
+2. `t_cities` — хранит информацию о городах, в которых доступно приложение.
+    ```sql
+    id         BIGINT AUTO_INCREMENT NOT NULL,
+    name       VARCHAR(100)          NOT NULL,
+    country_id BIGINT                NOT NULL,
+    PRIMARY KEY (id)
+    ```
+3. `t_users` — хранит информацию о пользователях.
+    ```sql
+    id         BIGINT AUTO_INCREMENT NOT NULL,
+    username   VARCHAR(150)          NOT NULL,
+    email      VARCHAR(150)          NOT NULL,
+    password   VARCHAR(256)          NOT NULL,
+    country_id BIGINT                NOT NULL,
+    city_id    BIGINT                NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (country_id) REFERENCES t_countries (id),
+    FOREIGN KEY (city_id) REFERENCES t_cities (id)
+    ```
+4. `t_roles` — хранит все доступные роли в системе
+    ```sql
+    id   BIGINT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100)          NOT NULL,
+    PRIMARY KEY (id)
+    ```
+5. `t_users_roles` — служит для связки пользователей и ролей
+    ```sql
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, role_id)
+    ```
+6. `t_sessions` — хранит информацию о сессиях пользователей
+    ```sql
+    id         BIGINT AUTO_INCREMENT NOT NULL,
+    token      VARCHAR(192)          NOT NULL,
+    user_id    BIGINT                NOT NULL,
+    expires_at TIMESTAMP             NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES t_users (id)
+    ```
+7. `t_mail_verification` — хранит информацию о кодах подтверждения регистрации
+    ```sql
+    id    BIGINT AUTO_INCREMENT NOT NULL,
+    email VARCHAR(120)          NOT NULL,
+    code  VARCHAR(6)            NOT NULL,
+    PRIMARY KEY (id)
+    ```
+8. `t_exception_log` — хранит логи всех ошибок API
+    ```sql
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    cause     VARCHAR(150)          NOT NULL,
+    message   VARCHAR(2048)         NOT NULL,
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+    ```
+9. `t_login_log` — хранит логи всех логинов пользователей
+    ```sql
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    user_id   BIGINT                NOT NULL,
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+    ```
+10. `t_action_log` — хранит действия всех пользователей в админ-панели
+    ```sql
+    id        BIGINT AUTO_INCREMENT NOT NULL,
+    user_id   BIGINT                NOT NULL,
+    action    VARCHAR(250)          NOT NULL,
+    endpoint  VARCHAR(250)          NOT NULL,
+    data      VARCHAR(2048),
+    timestamp TIMESTAMP             NOT NULL DEFAULT current_timestamp,
+    PRIMARY KEY (id)
+    ```
+11. `vw_users_roles` — удобное отображение пользователей и их ролей
+     ```sql
+     SELECT user.id       AS user_id,
+        user.username AS username,
+        role.id       AS role_id,
+        role.name     AS role_name
+     FROM t_users user
+     JOIN t_users_roles user_role on user.id = user_role.user_id
+     JOIN t_roles role on user_role.role_id = role.id;
+     ```
+12. `vw_users_sessions` — удобное отображение пользователей и их сессий
+     ```sql
+     SELECT session.id,
+       session.token,
+       session.user_id,
+       session.expires_at,
+       user.username
+    FROM t_sessions session
+    JOIN t_users user on user.id = session.user_id;
+     ```
