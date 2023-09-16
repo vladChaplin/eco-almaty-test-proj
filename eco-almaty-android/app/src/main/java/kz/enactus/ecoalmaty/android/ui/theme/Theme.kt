@@ -13,7 +13,10 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.core.view.WindowCompat
+import kz.enactus.ecoalmaty.android.R
 
 private val DarkColorScheme = darkColorScheme(
         primary = Purple80,
@@ -64,7 +67,7 @@ fun EcoAlmatyAppTheme(
 
     MaterialTheme(
             colorScheme = colorScheme,
-            typography = Typography,
+            typography = MontserratTypography,
             content = content
     )
 }

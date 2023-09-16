@@ -9,19 +9,22 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import kz.enactus.ecoalmaty.android.app.MainEcoAlmatyApp
+import kz.enactus.ecoalmaty.android.screens.AuthorizationScreen
+import kz.enactus.ecoalmaty.android.screens.SignUpScreen
+import kz.enactus.ecoalmaty.android.screens.WelcomeScreen
 import kz.enactus.ecoalmaty.android.ui.theme.EcoAlmatyAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            EcoAlmatyAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
+            MainEcoAlmatyApp()
         }
     }
 }

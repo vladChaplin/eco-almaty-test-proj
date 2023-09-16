@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EcoAlmaty App</string>
+    <string name="welcome_text">Очистим город вместе!</string>
+    <string name="textField">Почта или логин</string>
+    <string name="textHello">Привет</string>
+    <string name="textInputData">Введите ваши данные чтобы продолжить</string>
+    <string name="text_signin">Войти</string>
+    <string name="text_signup">Зарегистрироваться</string>
+
 </resources>
