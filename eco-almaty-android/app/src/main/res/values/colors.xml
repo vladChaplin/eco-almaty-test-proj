@@ -9,6 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorGreen">#11720F</color>
     <color name="colorGray">#E9E9E9</color>
+    <color name="colorMediumGray">#B1B1B1</color>
     <color name="colorDarkGray">#6C6C6C</color>
+    <color name="colorIconGray">#DFDCDC</color>
     <color name="colorLightGreen">#7D9848</color>
+    <color name="colorWhiteBackground">#F7F7F6</color>
+    <color name="colorLightTransGreen">#DDF3B1</color>
+
 </resources>

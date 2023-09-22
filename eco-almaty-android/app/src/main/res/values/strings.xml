@@ -1,10 +1,37 @@
 <resources>
     <string name="app_name">EcoAlmaty App</string>
-    <string name="welcome_text">Очистим город вместе!</string>
-    <string name="textField">Почта или логин</string>
-    <string name="textHello">Привет</string>
-    <string name="textInputData">Введите ваши данные чтобы продолжить</string>
+    <string name="text_clear_city">Очистим город вместе!</string>
+    <string name="text_hello">Привет!</string>
+    <string name="text_input_data">Введите ваши данные чтобы продолжить</string>
     <string name="text_signin">Войти</string>
+    <string name="text_signin_2">Вход</string>
     <string name="text_signup">Зарегистрироваться</string>
+    <string name="text_link_signup">Зарегистрируйтесь</string>
+    <string name="text_input_date">Введите ваши данные чтобы продолжить</string>
+    <string name="text_email_or_login">Почта или логин</string>
+    <string name="text_email">Почта или логин</string>
+    <string name="text_password">Пароль</string>
+    <string name="text_show_password">Показать пароль</string>
+    <string name="text_hide_password">Скрыть пароль</string>
+    <string name="text_restore_password">Забыли пароль?</string>
+    <string name="text_sign_in_google">Войти с Google</string>
+    <string name="text_welcome_signup">Добро пожаловать!</string>
+    <string name="text_signup_and_continue">Зарегистрируйтесь чтобы продолжить</string>
+    <string name="text_name">Имя</string>
+    <string name="text_phone_num">Номер телефона</string>
+    <string name="text_send_message_pass_reset">Мы отправим Вам код для сброса пароля на вашу почту</string>
+    <string name="text_message_mail_not_reg">Данный почтовый адрес не зарегистрирован</string>
+    <string name="text_restore_password_btn">Восстановить пароль</string>
+    <string name="text_return_to_login">Вернуться ко входу</string>
+    <string name="text_confirm">Подтверждение</string>
+    <string name="text_code">Код</string>
+    <string name="text_resend_code">Отправить код повторно</string>
+    <string name="text_complete_reg">Завершить регистрацию</string>
+    <string name="text_code_doesnt_come">Код не приходит?</string>
+    <string name="text_change_email_address">Изменить почтовый адрес</string>
+
+    <string name="text_sent_code_email_address_to_confirm">Мы отправили код на указанную Вами почту для подтверждения аккаунта</string>
+
+
 
 </resources>

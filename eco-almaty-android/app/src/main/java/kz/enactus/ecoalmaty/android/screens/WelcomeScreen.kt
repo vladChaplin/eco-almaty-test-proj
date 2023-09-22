@@ -5,11 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import kz.enactus.ecoalmaty.android.R
@@ -27,18 +24,18 @@ import kz.enactus.ecoalmaty.android.components.HeaderTextComponent
 @Composable
 fun WelcomeScreen(navController: NavController) {
     Surface(
-        color = Color.White,
+        color = colorResource(id = R.color.colorWhiteBackground),
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(colorResource(id = R.color.colorWhiteBackground))
             .padding(32.dp)
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .offset(y = 300.dp)
+                .fillMaxSize(),
         ) {
-            HeaderTextComponent(value = stringResource(id = R.string.welcome_text))
+            Spacer(modifier = Modifier.height(300.dp))
+            HeaderTextComponent(value = stringResource(id = R.string.text_clear_city))
             Spacer(modifier = Modifier.height(40.dp))
             BtnDefault(
                 onClick = {

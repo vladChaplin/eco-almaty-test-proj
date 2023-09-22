@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.screens.AuthorizationScreen
+import kz.enactus.ecoalmaty.android.screens.RestorePasswordScreen
 import kz.enactus.ecoalmaty.android.screens.SignUpScreen
 import kz.enactus.ecoalmaty.android.screens.WelcomeScreen
 
@@ -16,6 +17,7 @@ sealed class Destination(val route: String) {
     object WelcomeScreen: Destination("WelcomeScreen")
     object SignUpScreen: Destination("SignUpScreen")
     object AuthorizationScreen: Destination("AuthorizationScreen")
+    object RestorePasswordScreen: Destination("RestorePasswordScreen")
 }
 
 @Composable
@@ -36,6 +38,9 @@ fun MainEcoAlmatyApp() {
             }
             composable(Destination.AuthorizationScreen.route) {
                 AuthorizationScreen(navController)
+            }
+            composable(Destination.RestorePasswordScreen.route) {
+                RestorePasswordScreen(navController)
             }
         }
 
