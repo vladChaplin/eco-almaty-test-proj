@@ -1,4 +1,4 @@
-package kz.enactus.ecoalmaty.android.components
+package kz.enactus.ecoalmaty.android.components.inputs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -21,16 +21,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
 
 @Composable
-fun VerificationEmailTextField() {
+fun AVerificationEmailTextField() {
 
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        CustomTextField(
+        ACustomTextField(
             leadingIcon = Icons.Filled.Email,
             leadingIconContentDesc = "emailIcon",
             keyboardOptions = KeyboardOptions(

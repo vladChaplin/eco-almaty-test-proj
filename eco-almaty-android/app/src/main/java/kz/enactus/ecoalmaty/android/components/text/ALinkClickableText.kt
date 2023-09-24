@@ -1,23 +1,19 @@
-package kz.enactus.ecoalmaty.android.components
+package kz.enactus.ecoalmaty.android.components.text
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
-import kz.enactus.ecoalmaty.android.app.Destination
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
-fun LinkClickableText(
+fun ALinkClickableText(
     valueText: String,
     onClick: (Int) -> Unit,
     colorText: Color = colorResource(id = R.color.colorLightGreen),
@@ -33,6 +29,6 @@ fun LinkClickableText(
             fontFamily = montserratFontFamily,
             fontSize = fontSz,
             fontWeight = FontWeight.SemiBold,
-        )
+        ),
     )
 }

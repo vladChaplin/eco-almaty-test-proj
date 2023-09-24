@@ -15,5 +15,6 @@
     <color name="colorLightGreen">#7D9848</color>
     <color name="colorWhiteBackground">#F7F7F6</color>
     <color name="colorLightTransGreen">#DDF3B1</color>
+    <color name="colorBlue">#1976D2</color>
 
 </resources>

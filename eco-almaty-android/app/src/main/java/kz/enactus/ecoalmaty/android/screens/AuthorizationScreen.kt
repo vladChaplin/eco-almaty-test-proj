@@ -12,7 +12,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,14 +31,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.app.Destination
-import kz.enactus.ecoalmaty.android.components.BtnDefault
-import kz.enactus.ecoalmaty.android.components.CustomClickableText
-import kz.enactus.ecoalmaty.android.components.CustomTextField
-import kz.enactus.ecoalmaty.android.components.GoogleButtonComponent
-import kz.enactus.ecoalmaty.android.components.HeaderTextComponent
-import kz.enactus.ecoalmaty.android.components.LinkClickableText
-import kz.enactus.ecoalmaty.android.components.NormalTextComponent
-import kz.enactus.ecoalmaty.android.components.PasswordCustomTextField
+import kz.enactus.ecoalmaty.android.components.text.ACustomClickableText
+import kz.enactus.ecoalmaty.android.components.buttons.AGoogleButtonComponent
+import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
+import kz.enactus.ecoalmaty.android.components.inputs.ACustomTextField
+import kz.enactus.ecoalmaty.android.components.inputs.APasswordCustomTextField
+import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
+import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 
@@ -59,17 +57,17 @@ fun AuthorizationScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(90.dp))
 
 
-            HeaderTextComponent(value = stringResource(id = R.string.text_hello), fontSz = 36.sp)
-            NormalTextComponent(value = stringResource(id = R.string.text_input_data),
-                colorCustom = colorResource(id = R.color.colorLightGreen))
+            AHeaderTextComponent(value = stringResource(id = R.string.text_hello), fontSz = 36.sp)
+            ANormalTextComponent(value = stringResource(id = R.string.text_input_data),
+                colorText = colorResource(id = R.color.colorLightGreen))
             Spacer(modifier = Modifier.height(22.dp))
-            HeaderTextComponent(
+            AHeaderTextComponent(
                 value = stringResource(id = R.string.text_email_or_login),
                 fontSz = 12.sp,
-                colorCustom = colorResource(id = R.color.colorMediumGray)
+                colorText = colorResource(id = R.color.colorMediumGray)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            CustomTextField(
+            ACustomTextField(
                 leadingIcon = Icons.Default.Person,
                 leadingIconContentDesc = "emailOrLoginIcon",
                 keyboardOptions = KeyboardOptions(
@@ -78,13 +76,13 @@ fun AuthorizationScreen(navController: NavController) {
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
-            HeaderTextComponent(
+            AHeaderTextComponent(
                 value = stringResource(id = R.string.text_password),
                 fontSz = 12.sp,
-                colorCustom = colorResource(id = R.color.colorMediumGray)
+                colorText = colorResource(id = R.color.colorMediumGray)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            PasswordCustomTextField(
+            APasswordCustomTextField(
                 leadingIcon = Icons.Default.Lock,
                 leadingIconContentDesc = "passwordLock",
                 )
@@ -104,22 +102,22 @@ fun AuthorizationScreen(navController: NavController) {
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
-            BtnDefault(
+            ABtnDefault(
                 onClick = {
 
                 },
-                labelValue = stringResource(id = R.string.text_complete_reg),
+                labelValue = stringResource(id = R.string.text_signin),
                 colorResource(id = R.color.colorGreen),
                 Color.White
             )
             Spacer(modifier = Modifier.height(24.dp))
-            GoogleButtonComponent(
+            AGoogleButtonComponent(
                 onClick = { /*
                     Реализация авторизации через гугл аккаунт
                 */ },
             )
             Spacer(modifier = Modifier.height(39.dp))
-            CustomClickableText(
+            ACustomClickableText(
                 valueText = stringResource(id = R.string.text_link_signup),
                 onClick = {
                     navController.navigate(Destination.SignUpScreen.route)

@@ -2,6 +2,7 @@
     <string name="app_name">EcoAlmaty App</string>
     <string name="text_clear_city">Очистим город вместе!</string>
     <string name="text_hello">Привет!</string>
+    <string name="text_already_have_account">Уже есть аккаунт?</string>
     <string name="text_input_data">Введите ваши данные чтобы продолжить</string>
     <string name="text_signin">Войти</string>
     <string name="text_signin_2">Вход</string>
@@ -29,8 +30,18 @@
     <string name="text_complete_reg">Завершить регистрацию</string>
     <string name="text_code_doesnt_come">Код не приходит?</string>
     <string name="text_change_email_address">Изменить почтовый адрес</string>
-
+    <string name="text_timer_out">через</string>
     <string name="text_sent_code_email_address_to_confirm">Мы отправили код на указанную Вами почту для подтверждения аккаунта</string>
+    <string name="text_first_name">Авоська</string>
+    <string name="text_last_name">Аристархович</string>
+    <string name="text_status_online">В сети</string>
+    <string name="text_status_offline">Не в сети </string>
+    <string name="text_my_contacts">Мои контакты</string>
+    <string name="text_profile_phone">+7 (777) 777-77-77</string>
+    <string name="text_profile_email">pochta@ecobox.kz</string>
+    <string name="text_profile_address">Алматы, Казахстан</string>
+    <string name="text_edit">Редактировать</string>
+
 
 
 

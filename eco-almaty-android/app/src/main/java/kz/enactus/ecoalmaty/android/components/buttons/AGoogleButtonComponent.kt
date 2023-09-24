@@ -1,4 +1,4 @@
-package kz.enactus.ecoalmaty.android.components
+package kz.enactus.ecoalmaty.android.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -24,7 +24,7 @@ import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
-fun GoogleButtonComponent(
+fun AGoogleButtonComponent(
     onClick: () -> Unit,
     labelValue: String = stringResource(id = R.string.text_sign_in_google),
     backgroundColor: Color = Color.Transparent,

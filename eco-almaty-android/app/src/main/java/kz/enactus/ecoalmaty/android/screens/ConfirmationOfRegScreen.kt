@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,13 +22,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.app.Destination
-import kz.enactus.ecoalmaty.android.components.BtnDefault
-import kz.enactus.ecoalmaty.android.components.CustomClickableText
-import kz.enactus.ecoalmaty.android.components.CustomTextField
-import kz.enactus.ecoalmaty.android.components.GoogleButtonComponent
-import kz.enactus.ecoalmaty.android.components.HeaderTextComponent
-import kz.enactus.ecoalmaty.android.components.NormalTextComponent
-import kz.enactus.ecoalmaty.android.components.VerificationEmailTextField
+import kz.enactus.ecoalmaty.android.components.utils.ACountdownTimer
+import kz.enactus.ecoalmaty.android.components.text.ACustomClickableText
+import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
+import kz.enactus.ecoalmaty.android.components.inputs.ASimpleCustomTextField
+import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
+import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
 
 @Composable
 fun ConfirmationOfRegScreen(navController: NavController) {
@@ -46,38 +43,39 @@ fun ConfirmationOfRegScreen(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(50.dp))
-            HeaderTextComponent(
+            AHeaderTextComponent(
                 value = stringResource(id = R.string.text_confirm),
                 fontSz = 24.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
-            NormalTextComponent(
+            ANormalTextComponent(
                 value = stringResource(id = R.string.text_sent_code_email_address_to_confirm),
-                colorCustom = colorResource(id = R.color.colorLightGreen),
+                colorText = colorResource(id = R.color.colorLightGreen),
             )
             Spacer(modifier = Modifier.height(30.dp))
-            HeaderTextComponent(
+            AHeaderTextComponent(
                 value = stringResource(id = R.string.text_code),
                 fontSz = 12.sp,
-                colorCustom = colorResource(id = R.color.colorMediumGray)
+                colorText = colorResource(id = R.color.colorMediumGray)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            CustomTextField(leadingIcon = null, keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Done,
-                )
-            )
+            ASimpleCustomTextField(keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ))
             Spacer(modifier = Modifier.height(15.dp))
-            CustomClickableText(
-                startText = stringResource(id = R.string.text_resend_code),
-                valueText = "",
+            ACustomClickableText(
+                startText = "",
+                valueText = stringResource(id = R.string.text_resend_code),
                 onClick = {
                     navController.navigate(Destination.SignUpScreen.route)
                 },
                 colorText = colorResource(id = R.color.colorGreen),
             )
+            ACountdownTimer()
+
             Spacer(modifier = Modifier.height(40.dp))
-            BtnDefault(
+            ABtnDefault(
                 onClick = {
 
                 },
@@ -87,7 +85,7 @@ fun ConfirmationOfRegScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(18.dp))
 
-            CustomClickableText(
+            ACustomClickableText(
                 startText = stringResource(id = R.string.text_code_doesnt_come),
                 valueText = stringResource(id = R.string.text_change_email_address),
                 onClick = {

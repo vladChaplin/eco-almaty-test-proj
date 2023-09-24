@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.app.Destination
-import kz.enactus.ecoalmaty.android.components.BtnDefault
-import kz.enactus.ecoalmaty.android.components.HeaderTextComponent
+import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
+import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -35,9 +35,9 @@ fun WelcomeScreen(navController: NavController) {
                 .fillMaxSize(),
         ) {
             Spacer(modifier = Modifier.height(300.dp))
-            HeaderTextComponent(value = stringResource(id = R.string.text_clear_city))
+            AHeaderTextComponent(value = stringResource(id = R.string.text_clear_city))
             Spacer(modifier = Modifier.height(40.dp))
-            BtnDefault(
+            ABtnDefault(
                 onClick = {
                     navController.navigate(Destination.AuthorizationScreen.route)
                 },
@@ -46,7 +46,7 @@ fun WelcomeScreen(navController: NavController) {
                 Color.White
             )
             Spacer(modifier = Modifier.height(10.dp))
-            BtnDefault(
+            ABtnDefault(
                 onClick = {
                     navController.navigate(Destination.SignUpScreen.route)
                 },

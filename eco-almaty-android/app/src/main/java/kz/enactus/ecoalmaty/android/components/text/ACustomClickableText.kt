@@ -1,4 +1,4 @@
-package kz.enactus.ecoalmaty.android.components
+package kz.enactus.ecoalmaty.android.components.text
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomClickableText(
+fun ACustomClickableText(
     startText: String = "Ещё нет аккаунта?",
     valueText: String,
     onClick: (Int) -> Unit,
@@ -32,11 +32,12 @@ fun CustomClickableText(
         Spacer(
             modifier = Modifier.width(3.dp)
         )
-        LinkClickableText(
+        ALinkClickableText(
             valueText = valueText,
             onClick = onClick,
             colorText = colorText,
             fontSz = fontSz,
+
         )
     }
 }
