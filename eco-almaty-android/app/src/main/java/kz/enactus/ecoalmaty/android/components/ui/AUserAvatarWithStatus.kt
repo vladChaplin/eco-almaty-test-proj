@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
-import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
 import kz.enactus.ecoalmaty.android.components.utils.toHslColor
+import kz.enactus.ecoalmaty.android.enums.UserStatus
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 

@@ -1,4 +1,4 @@
-package kz.enactus.ecoalmaty.android.components.ui
+package kz.enactus.ecoalmaty.android.enums
 
 enum class UserStatus {
     Online,

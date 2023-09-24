@@ -31,7 +31,7 @@ import kz.enactus.ecoalmaty.android.components.text.AIconAndTextComponent
 import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
 import kz.enactus.ecoalmaty.android.components.text.ATextWithStatus
 import kz.enactus.ecoalmaty.android.components.ui.AUserAvatarWithStatus
-import kz.enactus.ecoalmaty.android.components.ui.UserStatus
+import kz.enactus.ecoalmaty.android.enums.UserStatus
 
 @Composable
 fun ProfileScreen(navController: NavController) {

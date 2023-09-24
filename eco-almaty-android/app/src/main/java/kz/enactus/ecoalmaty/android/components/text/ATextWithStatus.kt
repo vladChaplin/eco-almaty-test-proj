@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
-import kz.enactus.ecoalmaty.android.components.ui.UserStatus
+import kz.enactus.ecoalmaty.android.enums.UserStatus
 
 @Composable
 fun ATextWithStatus(
