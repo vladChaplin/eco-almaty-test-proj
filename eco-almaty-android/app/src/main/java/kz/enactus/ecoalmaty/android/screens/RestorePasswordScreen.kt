@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.screens
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,12 +20,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.app.Destination
-import kz.enactus.ecoalmaty.android.components.text.ACustomClickableText
-import kz.enactus.ecoalmaty.android.components.buttons.AGoogleButtonComponent
-import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
+import kz.enactus.ecoalmaty.android.components.text.AClickableText
+import kz.enactus.ecoalmaty.android.components.buttons.AGoogleButton
+import kz.enactus.ecoalmaty.android.components.buttons.AButton
 import kz.enactus.ecoalmaty.android.components.inputs.AVerificationEmailTextField
-import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
-import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
+import kz.enactus.ecoalmaty.android.components.text.AHeader
+import kz.enactus.ecoalmaty.android.components.text.ALabel
 
 @Composable
 fun RestorePasswordScreen(navController: NavController) {
@@ -41,17 +40,17 @@ fun RestorePasswordScreen(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(50.dp))
-            AHeaderTextComponent(
+            AHeader(
                 value = stringResource(id = R.string.text_restore_password),
                 fontSz = 24.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
-            ANormalTextComponent(
+            ALabel(
                 value = stringResource(id = R.string.text_send_message_pass_reset),
                 colorText = colorResource(id = R.color.colorLightGreen),
             )
             Spacer(modifier = Modifier.height(30.dp))
-            AHeaderTextComponent(
+            AHeader(
                 value = stringResource(id = R.string.text_email),
                 fontSz = 12.sp,
                 colorText = colorResource(id = R.color.colorMediumGray)
@@ -59,35 +58,28 @@ fun RestorePasswordScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(8.dp))
             AVerificationEmailTextField()
             Spacer(modifier = Modifier.height(40.dp))
-            ABtnDefault(
-                onClick = {
-
-                },
+            AButton(
+                onClick = {},
                 labelValue = stringResource(id = R.string.text_restore_password_btn),
                 colorResource(id = R.color.colorGreen),
                 Color.White,
             )
             Spacer(modifier = Modifier.height(18.dp))
-            AGoogleButtonComponent(
-                onClick = {
-                    navController.navigate(Destination.AuthorizationScreen.route)
-                },
+            AGoogleButton(
+                onClick = { navController.navigate(Destination.AuthorizationScreen.route) },
                 iconCustom = Icons.Filled.ArrowBack,
                 labelValue = stringResource(id = R.string.text_return_to_login),
                 fontSz = 16.sp
             )
             Spacer(modifier = Modifier.height(48.dp))
-            ACustomClickableText(
+            AClickableText(
                 valueText = stringResource(id = R.string.text_link_signup),
-                onClick = {
-                    navController.navigate(Destination.SignUpScreen.route)
-                },
+                onClick = { navController.navigate(Destination.SignUpScreen.route) },
                 colorText = colorResource(id = R.color.colorGreen),
             )
         }
     }
 }
-
 
 @Preview
 @Composable

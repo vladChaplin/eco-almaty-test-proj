@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.inputs
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,7 +24,6 @@ import kz.enactus.ecoalmaty.android.R
 
 @Composable
 fun AVerificationEmailTextField() {
-
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -41,7 +39,6 @@ fun AVerificationEmailTextField() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-
                 .background(
                     color = colorResource(id = R.color.colorLightTransGreen),
                     shape = RoundedCornerShape(size = 8.dp)

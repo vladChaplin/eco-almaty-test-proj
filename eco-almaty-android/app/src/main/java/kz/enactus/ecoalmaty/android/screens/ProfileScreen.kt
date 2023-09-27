@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.screens
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,19 +23,18 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.R
-import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
-import kz.enactus.ecoalmaty.android.components.containers.AContainerDefault
-import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
-import kz.enactus.ecoalmaty.android.components.text.AIconAndTextComponent
-import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
+import kz.enactus.ecoalmaty.android.components.buttons.AButton
+import kz.enactus.ecoalmaty.android.components.containers.AContainer
+import kz.enactus.ecoalmaty.android.components.text.AHeader
+import kz.enactus.ecoalmaty.android.components.text.AIconAndText
+import kz.enactus.ecoalmaty.android.components.text.ALabel
 import kz.enactus.ecoalmaty.android.components.text.ATextWithStatus
 import kz.enactus.ecoalmaty.android.components.ui.AUserAvatarWithStatus
 import kz.enactus.ecoalmaty.android.enums.UserStatus
 
 @Composable
 fun ProfileScreen(navController: NavController) {
-
-    Surface (
+    Surface(
         color = colorResource(id = R.color.colorWhiteBackground),
         modifier = Modifier
             .fillMaxSize()
@@ -49,7 +47,7 @@ fun ProfileScreen(navController: NavController) {
             )
     ) {
         Column {
-            AContainerDefault(
+            AContainer(
                 modifier = Modifier.height(126.dp)
             ) {
                 Row(
@@ -59,30 +57,27 @@ fun ProfileScreen(navController: NavController) {
                         end = 12.dp,
                         bottom = 24.dp
                     )
-                ) {
+                ){
                     AUserAvatarWithStatus(
                         id = "0",
                         firstName = stringResource(id = R.string.text_first_name),
                         lastName = stringResource(id = R.string.text_last_name),
-                        status = UserStatus.Online)
+                        status = UserStatus.ONLINE)
                     Spacer(modifier = Modifier.width(12.dp))
-                    Column (
+                    Column(
                         modifier = Modifier.padding(top = 20.dp)
                     ) {
-                        ANormalTextComponent(
-                            value = stringResource(id = R.string.text_first_name) + " " +
-                                    stringResource(id = R.string.text_last_name)
+                        ALabel(
+                            value = stringResource(id = R.string.text_first_name) + " " + stringResource(id = R.string.text_last_name)
                         )
                         ATextWithStatus(
                             text = stringResource(id = R.string.text_status_online),
-                            status = UserStatus.Online)
+                            status = UserStatus.ONLINE)
                     }
                 }
             }
-
             Spacer(modifier = Modifier.height(12.dp))
-
-            AContainerDefault() {
+            AContainer() {
                 Column(
                     modifier = Modifier.padding(
                         start = 12.dp,
@@ -91,32 +86,29 @@ fun ProfileScreen(navController: NavController) {
                         bottom = 24.dp
                     )
                 ) {
-                    AHeaderTextComponent(
+                    AHeader(
                         value = stringResource(id = R.string.text_my_contacts),
                         fontSz = 28.sp,
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-
-                    AIconAndTextComponent(
+                    AIconAndText(
                         icon = Icons.Outlined.Phone,
                         text = stringResource(id = R.string.text_profile_phone),
                         )
                     Spacer(modifier = Modifier.height(19.dp))
-                    AIconAndTextComponent(
+                    AIconAndText(
                         icon = Icons.Outlined.Email,
                         text = stringResource(id = R.string.text_profile_email),
                         colorText = colorResource(id = R.color.colorBlue)
                     )
                     Spacer(modifier = Modifier.height(19.dp))
-                    AIconAndTextComponent(
+                    AIconAndText(
                         icon = Icons.Outlined.Home,
                         text = stringResource(id = R.string.text_profile_address),
                     )
                     Spacer(modifier = Modifier.height(19.dp))
-                    ABtnDefault(
-                        onClick = { /*
-
-                        */ },
+                    AButton(
+                        onClick = { },
                         labelValue = stringResource(id = R.string.text_edit),
                         backgroundColor = colorResource(id = R.color.colorGreen),
                         textColor = colorResource(id = R.color.white),
@@ -129,9 +121,7 @@ fun ProfileScreen(navController: NavController) {
                 }
             }
         }
-
     }
-
 }
 
 @Preview

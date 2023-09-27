@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.inputs
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,19 +34,16 @@ import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun APasswordCustomTextField(
+fun APasswordTextField(
     leadingIcon: ImageVector?,
     leadingIconContentDesc: String? = null,
 ) {
-
     val password = remember {
         mutableStateOf("")
     }
-
     val passwordVisible = remember {
         mutableStateOf(false)
     }
-
     TextField(
         modifier = Modifier
             .fillMaxWidth()
@@ -61,7 +57,6 @@ fun APasswordCustomTextField(
                 colorResource(id = R.color.colorGray),
                 shape = RoundedCornerShape(size = 8.dp)
             ),
-
         colors = TextFieldDefaults.textFieldColors(
             textColor = colorResource(id = R.color.colorDarkGray),
             disabledTextColor = Color.Transparent,
@@ -70,16 +65,13 @@ fun APasswordCustomTextField(
             disabledIndicatorColor = Color.Transparent,
             containerColor = colorResource(id = R.color.colorGray),
             cursorColor = colorResource(id = R.color.colorLightGreen),
-
             ),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password,
             imeAction = ImeAction.Done,
         ),
         value = password.value,
-        onValueChange = {
-            password.value = it
-        },
+        onValueChange = { password.value = it },
         leadingIcon = {
             leadingIcon?.let { icon ->
                 Icon(
@@ -96,19 +88,16 @@ fun APasswordCustomTextField(
             fontWeight = FontWeight.Medium
         ),
         trailingIcon = {
-
             val iconImage = if(passwordVisible.value) {
                 Icons.Filled.Visibility
             } else {
                 Icons.Filled.VisibilityOff
             }
-
             var description = if(passwordVisible.value) {
                 stringResource(id = R.string.text_hide_password)
             } else {
                 stringResource(id = R.string.text_show_password)
             }
-
             IconButton(onClick = {
                 passwordVisible.value = !passwordVisible.value
             }) {
@@ -124,6 +113,5 @@ fun APasswordCustomTextField(
         } else {
             PasswordVisualTransformation()
         }
-
     )
 }

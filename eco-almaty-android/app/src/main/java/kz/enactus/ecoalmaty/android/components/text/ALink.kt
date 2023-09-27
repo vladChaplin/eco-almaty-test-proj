@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.text
-
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -13,14 +12,13 @@ import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
-fun ALinkClickableText(
+fun ALink(
     valueText: String,
     onClick: (Int) -> Unit,
     colorText: Color = colorResource(id = R.color.colorLightGreen),
     fontSz: TextUnit = 12.sp,
 ) {
     val annotatedStr = AnnotatedString(valueText)
-
     ClickableText(
         text = annotatedStr,
         onClick = onClick,

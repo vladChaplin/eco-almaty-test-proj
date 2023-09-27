@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.screens
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.app.Destination
-import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
-import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
+import kz.enactus.ecoalmaty.android.components.buttons.AButton
+import kz.enactus.ecoalmaty.android.components.text.AHeader
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -31,25 +30,20 @@ fun WelcomeScreen(navController: NavController) {
             .padding(32.dp)
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(300.dp))
-            AHeaderTextComponent(value = stringResource(id = R.string.text_clear_city))
+            AHeader(value = stringResource(id = R.string.text_clear_city))
             Spacer(modifier = Modifier.height(40.dp))
-            ABtnDefault(
-                onClick = {
-                    navController.navigate(Destination.AuthorizationScreen.route)
-                },
+            AButton(
+                onClick = { navController.navigate(Destination.AuthorizationScreen.route) },
                 labelValue = stringResource(id = R.string.text_signin),
                 colorResource(id = R.color.colorGreen),
                 Color.White
             )
             Spacer(modifier = Modifier.height(10.dp))
-            ABtnDefault(
-                onClick = {
-                    navController.navigate(Destination.SignUpScreen.route)
-                },
+            AButton(
+                onClick = { navController.navigate(Destination.SignUpScreen.route) },
                 labelValue = stringResource(id = R.string.text_signup),
                 colorResource(id = R.color.colorGray),
                 colorResource(id = R.color.colorDarkGray)

@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.ui
-
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,7 +26,6 @@ import kz.enactus.ecoalmaty.android.components.utils.toHslColor
 import kz.enactus.ecoalmaty.android.enums.UserStatus
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
-
 @Composable
 fun AUserAvatarWithStatus(
     id: String,
@@ -47,13 +45,11 @@ fun AUserAvatarWithStatus(
                 .uppercase()
             Color("$id / $name".toHslColor())
         }
-
         Box(modifier.size(size), contentAlignment = Alignment.Center) {
             val initials = (firstName.take(1) + lastName.take(1).uppercase())
             Canvas(modifier = Modifier.fillMaxSize()) {
                 drawCircle(SolidColor(color))
             }
-
             Text(
                 text = initials,
                 color = colorResource(id = R.color.white),
@@ -64,9 +60,8 @@ fun AUserAvatarWithStatus(
                     fontStyle = FontStyle.Normal
                 )
             )
-
         }
-        if (status != UserStatus.None) {
+        if (status != UserStatus.NONE) {
             Indicator(
                 avatarStatus = status,
                 size = size / 5,
@@ -75,7 +70,6 @@ fun AUserAvatarWithStatus(
             )
         }
     }
-
 }
 
 @Composable
@@ -87,11 +81,10 @@ private fun Indicator(
     colorBorder: Color,
 ) {
     val color = when (avatarStatus) {
-        UserStatus.Online -> colorResource(id = R.color.colorGreen)
-        UserStatus.Offline -> colorResource(id = R.color.colorMediumGray)
+        UserStatus.ONLINE -> colorResource(id = R.color.colorGreen)
+        UserStatus.OFFLINE -> colorResource(id = R.color.colorMediumGray)
         else -> Color.Unspecified
     }
-
     Box(
         modifier = modifier
             .background(color, shape)

@@ -1,9 +1,6 @@
 package kz.enactus.ecoalmaty.android.components.text
-
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -18,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
 
 @Composable
-fun AIconAndTextComponent(
+fun AIconAndText(
     icon: ImageVector,
     text: String,
     fontSz: TextUnit = 17.sp,
@@ -27,20 +24,15 @@ fun AIconAndTextComponent(
     spacer: Dp = 6.dp,
     modifierIcon: Modifier = Modifier,
 ) {
-    Row(
-
-    ) {
-
+    Row() {
         Icon(
           imageVector = icon,
           contentDescription = null,
           tint = iconColor,
           modifier = modifierIcon
         )
-
         Spacer(modifier = Modifier.width(spacer))
-        
-        ANormalTextComponent(
+        ALabel(
             value = text,
             fontSz = fontSz,
             colorText = colorText

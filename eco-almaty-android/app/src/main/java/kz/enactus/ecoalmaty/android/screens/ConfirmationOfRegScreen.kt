@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.screens
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,11 +22,11 @@ import androidx.navigation.compose.rememberNavController
 import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.app.Destination
 import kz.enactus.ecoalmaty.android.components.utils.ACountdownTimer
-import kz.enactus.ecoalmaty.android.components.text.ACustomClickableText
-import kz.enactus.ecoalmaty.android.components.buttons.ABtnDefault
-import kz.enactus.ecoalmaty.android.components.inputs.ASimpleCustomTextField
-import kz.enactus.ecoalmaty.android.components.text.AHeaderTextComponent
-import kz.enactus.ecoalmaty.android.components.text.ANormalTextComponent
+import kz.enactus.ecoalmaty.android.components.text.AClickableText
+import kz.enactus.ecoalmaty.android.components.buttons.AButton
+import kz.enactus.ecoalmaty.android.components.inputs.ASimpleTextField
+import kz.enactus.ecoalmaty.android.components.text.AHeader
+import kz.enactus.ecoalmaty.android.components.text.ALabel
 
 @Composable
 fun ConfirmationOfRegScreen(navController: NavController) {
@@ -38,63 +37,53 @@ fun ConfirmationOfRegScreen(navController: NavController) {
             .background(colorResource(id = R.color.colorWhiteBackground))
             .padding(32.dp)
     ) {
-
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(50.dp))
-            AHeaderTextComponent(
+            AHeader(
                 value = stringResource(id = R.string.text_confirm),
                 fontSz = 24.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
-            ANormalTextComponent(
+            ALabel(
                 value = stringResource(id = R.string.text_sent_code_email_address_to_confirm),
                 colorText = colorResource(id = R.color.colorLightGreen),
             )
             Spacer(modifier = Modifier.height(30.dp))
-            AHeaderTextComponent(
+            AHeader(
                 value = stringResource(id = R.string.text_code),
                 fontSz = 12.sp,
                 colorText = colorResource(id = R.color.colorMediumGray)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            ASimpleCustomTextField(keyboardOptions = KeyboardOptions(
+            ASimpleTextField(keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ))
             Spacer(modifier = Modifier.height(15.dp))
-            ACustomClickableText(
+            AClickableText(
                 startText = "",
                 valueText = stringResource(id = R.string.text_resend_code),
-                onClick = {
-                    navController.navigate(Destination.SignUpScreen.route)
-                },
+                onClick = { navController.navigate(Destination.SignUpScreen.route) },
                 colorText = colorResource(id = R.color.colorGreen),
             )
             ACountdownTimer()
-
             Spacer(modifier = Modifier.height(40.dp))
-            ABtnDefault(
-                onClick = {
-
-                },
+            AButton(
+                onClick = { },
                 labelValue = stringResource(id = R.string.text_complete_reg),
                 colorResource(id = R.color.colorGreen),
                 Color.White,
             )
             Spacer(modifier = Modifier.height(18.dp))
-
-            ACustomClickableText(
+            AClickableText(
                 startText = stringResource(id = R.string.text_code_doesnt_come),
                 valueText = stringResource(id = R.string.text_change_email_address),
-                onClick = {
-                    navController.navigate(Destination.SignUpScreen.route)
-                },
+                onClick = { navController.navigate(Destination.SignUpScreen.route) },
                 colorText = colorResource(id = R.color.colorGreen),
             )
         }
-
     }
 }
 

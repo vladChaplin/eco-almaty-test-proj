@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.inputs
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,14 +23,13 @@ import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ASimpleCustomTextField(
+fun ASimpleTextField(
     keyboardOptions: KeyboardOptions,
     backgroundColorCust: Color = colorResource(id = R.color.colorGray)
 ) {
     val textValue = remember {
         mutableStateOf("")
     }
-
     TextField(
         modifier = Modifier
             .fillMaxWidth()
@@ -45,7 +43,6 @@ fun ASimpleCustomTextField(
                 color = backgroundColorCust,
                 shape = RoundedCornerShape(size = 8.dp)
             ),
-
         colors = TextFieldDefaults.textFieldColors(
             textColor = colorResource(id = R.color.colorDarkGray),
             disabledTextColor = Color.Transparent,
@@ -54,13 +51,10 @@ fun ASimpleCustomTextField(
             disabledIndicatorColor = Color.Transparent,
             containerColor = backgroundColorCust,
             cursorColor = colorResource(id = R.color.colorLightGreen),
-
             ),
         keyboardOptions = keyboardOptions,
         value = textValue.value,
-        onValueChange = {
-            textValue.value = it
-        },
+        onValueChange = { textValue.value = it },
         shape = RoundedCornerShape(size = 8.dp),
         textStyle = TextStyle(
             fontFamily = montserratFontFamily,

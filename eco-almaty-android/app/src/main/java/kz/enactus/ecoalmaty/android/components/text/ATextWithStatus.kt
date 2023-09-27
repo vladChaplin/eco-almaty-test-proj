@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.text
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,12 +14,11 @@ fun ATextWithStatus(
     modifier: Modifier = Modifier
 ) {
     val textColor = when (status) {
-        UserStatus.Online -> colorResource(id = R.color.colorGreen)
-        UserStatus.Offline -> colorResource(id = R.color.colorMediumGray)
+        UserStatus.ONLINE -> colorResource(id = R.color.colorGreen)
+        UserStatus.OFFLINE -> colorResource(id = R.color.colorMediumGray)
         else -> Color.Unspecified
     }
-
-    ANormalTextComponent(
+    ALabel(
         value = text,
         colorText = textColor,
         fontSz = 12.sp,

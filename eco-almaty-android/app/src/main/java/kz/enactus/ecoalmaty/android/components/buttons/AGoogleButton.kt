@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.buttons
-
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,14 +23,13 @@ import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
-fun AGoogleButtonComponent(
+fun AGoogleButton(
     onClick: () -> Unit,
     labelValue: String = stringResource(id = R.string.text_sign_in_google),
     backgroundColor: Color = Color.Transparent,
     textColor: Color = colorResource(id = R.color.black),
     fontSz: TextUnit = 16.sp,
     iconCustom: ImageVector = ImageVector.vectorResource(R.drawable.google_sign_up_button),
-
 ) {
     Button(
         onClick = onClick,
@@ -45,7 +43,6 @@ fun AGoogleButtonComponent(
             color = colorResource(id = R.color.colorMediumGray),
         )
     ) {
-
         Image(
             imageVector = iconCustom,
             contentDescription = "google sign up",
@@ -57,6 +54,5 @@ fun AGoogleButtonComponent(
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(start = 24.dp)
         )
-
     }
 }

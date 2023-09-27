@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.buttons
-
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
-fun ABtnDefault(
+fun AButton(
     onClick: () -> Unit,
     labelValue: String,
     backgroundColor: Color,
@@ -42,6 +41,5 @@ fun ABtnDefault(
             fontWeight = FontWeight.Normal,
             textAlign = TextAlign.Center
         )
-
     }
 }

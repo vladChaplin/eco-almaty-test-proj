@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.utils
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,27 +18,22 @@ import java.util.concurrent.TimeUnit
 
 @Composable
 fun ACountdownTimer() {
-
     var timeLeft by remember { mutableStateOf(59L)}
-
     LaunchedEffect(key1 = timeLeft) {
         while (timeLeft > 0) {
             delay(1000L)
             timeLeft--
         }
     }
-
     fun resetTimer() {
         timeLeft = 60
     }
-
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
         val minutes = TimeUnit.SECONDS.toMinutes(timeLeft)
         val seconds = TimeUnit.SECONDS.toSeconds(timeLeft)
-
         Text(
             text = String.format("через %02d:%02d", minutes, seconds),
             textAlign = TextAlign.Center,

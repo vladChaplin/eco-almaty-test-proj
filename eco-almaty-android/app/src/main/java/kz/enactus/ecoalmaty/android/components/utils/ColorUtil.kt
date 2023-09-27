@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.components.utils
-
 import androidx.annotation.ColorInt
 import androidx.core.graphics.ColorUtils
 import kotlin.math.absoluteValue

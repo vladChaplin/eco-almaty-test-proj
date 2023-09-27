@@ -1,5 +1,4 @@
 package kz.enactus.ecoalmaty.android.app
-
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -30,30 +29,14 @@ fun MainEcoAlmatyApp() {
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-
         val navController = rememberNavController()
-
         NavHost(navController = navController, startDestination = Destination.WelcomeScreen.route) {
-            composable(Destination.WelcomeScreen.route) {
-                WelcomeScreen(navController)
-            }
-            composable(Destination.SignUpScreen.route) {
-                SignUpScreen(navController)
-            }
-            composable(Destination.AuthorizationScreen.route) {
-                AuthorizationScreen(navController)
-            }
-            composable(Destination.RestorePasswordScreen.route) {
-                RestorePasswordScreen(navController)
-            }
-            composable(Destination.ConfirmationOfRegScreen.route) {
-                ConfirmationOfRegScreen(navController)
-            }
-            composable(Destination.ProfileScreen.route) {
-                ProfileScreen(navController)
-            }
-
+            composable(Destination.WelcomeScreen.route) { WelcomeScreen(navController) }
+            composable(Destination.SignUpScreen.route) { SignUpScreen(navController) }
+            composable(Destination.AuthorizationScreen.route) { AuthorizationScreen(navController) }
+            composable(Destination.RestorePasswordScreen.route) { RestorePasswordScreen(navController) }
+            composable(Destination.ConfirmationOfRegScreen.route) { ConfirmationOfRegScreen(navController) }
+            composable(Destination.ProfileScreen.route) { ProfileScreen(navController) }
         }
-
     }
 }
