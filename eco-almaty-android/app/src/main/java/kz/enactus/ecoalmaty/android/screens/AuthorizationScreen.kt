@@ -41,6 +41,7 @@ import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
 @Composable
 fun AuthorizationScreen(navController: NavController) {
+//    TODO Rest
     Surface(
         color = colorResource(id = R.color.colorWhiteBackground),
         modifier = Modifier
