@@ -62,32 +62,33 @@ fun MainEcoAlmatyApp() {
                 val roles = backStackEntry.arguments?.getString("roles") ?: ""
                 ProfileScreen(navController, username, email, roles)
             }
-            composable("add_employee_screen") {
+            composable("add_employee_screen/{userRole}") { backStackEntry ->
                 val context = LocalContext.current
                 val token = getToken(context)
+                val userRole = backStackEntry.arguments?.getString("userRole") ?: ""
 
                 if (token != null) {
-                    AddEmployeeScreen(navController = navController, token = token)
+                    AddEmployeeScreen(
+                        navController = navController,
+                        token = token,
+                        role = userRole // Pass the role
+                    )
                 } else {
                     Toast.makeText(context, "Токен не найден. Авторизуйтесь снова.", Toast.LENGTH_SHORT).show()
                     navController.popBackStack()
                 }
             }
-            composable("employee_list_screen") {
+            composable("employee_list_screen/{userRole}") { backStackEntry ->
                 val context = LocalContext.current
                 val token = getToken(context)
+                val userRole = backStackEntry.arguments?.getString("userRole") ?: ""
+
                 if (token != null) {
-                    EmployeeListScreen(navController = navController, token = token)
-                } else {
-                    Toast.makeText(context, "Токен не найден. Авторизуйтесь снова.", Toast.LENGTH_SHORT).show()
-                    navController.popBackStack()
-                }
-            }
-            composable("employee_list_screen") {
-                val context = LocalContext.current
-                val token = getToken(context)
-                if (token != null) {
-                    EmployeeListScreen(navController, token)
+                    EmployeeListScreen(
+                        navController = navController,
+                        token = token,
+                        userRole = userRole // Pass the role to the screen
+                    )
                 } else {
                     Toast.makeText(context, "Токен не найден. Авторизуйтесь снова.", Toast.LENGTH_SHORT).show()
                     navController.popBackStack()

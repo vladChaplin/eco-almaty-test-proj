@@ -96,16 +96,14 @@ fun ProfileScreen(navController: NavController, username: String, email: String,
 
                     AIconAndText(
                         icon = Icons.Outlined.Person,
-                        text = translatedRole,  // Передаем переведенную роль
+                        text = translatedRole,  // Display the translated role
                         colorText = colorResource(id = R.color.colorMediumGray)
                     )
 
                     Spacer(modifier = Modifier.height(19.dp))
                     AButton(
                         onClick = {
-                            navController.navigate(
-                                "employee_list_screen"
-                            )
+                            navController.navigate("employee_list_screen/${roles}")
                         },
                         labelValue = "Сотрудники",
                         backgroundColor = colorResource(id = R.color.colorGreen),
@@ -117,22 +115,23 @@ fun ProfileScreen(navController: NavController, username: String, email: String,
                             .width(200.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(19.dp))
-                    AButton(
-                        onClick = { navController.navigate("add_employee_screen") },
-                        labelValue = "Добавить сотрудника",
-                        backgroundColor = colorResource(id = R.color.colorGreen),
-                        textColor = Color.White,
-                        fontSz = 17.sp,
-                        heightBtn = 27.dp,
-                        modifier = Modifier
-                            .wrapContentSize()
-                            .width(200.dp)
-                    )
+                    // Show "Добавить сотрудника" button only for admin users
+                    if (roles == "ROLE_ADMIN") {
+                        Spacer(modifier = Modifier.height(19.dp))
+                        AButton(
+                            onClick = { navController.navigate("add_employee_screen/${roles}") },
+                            labelValue = "Добавить сотрудника",
+                            backgroundColor = colorResource(id = R.color.colorGreen),
+                            textColor = Color.White,
+                            fontSz = 17.sp,
+                            heightBtn = 27.dp,
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .width(200.dp)
+                        )
+                    }
                 }
             }
-
-
         }
     }
 }
