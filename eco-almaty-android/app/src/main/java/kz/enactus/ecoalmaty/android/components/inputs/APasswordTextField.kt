@@ -35,16 +35,18 @@ import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun APasswordTextField(
-    leadingIcon: ImageVector?,
+    value: String,
+    onValueChange: (String) -> Unit,
+    leadingIcon: ImageVector? = null,
     leadingIconContentDesc: String? = null,
 ) {
-    val password = remember {
-        mutableStateOf("")
-    }
     val passwordVisible = remember {
         mutableStateOf(false)
     }
+
     TextField(
+        value = value,
+        onValueChange = onValueChange,
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(44.dp, 48.dp)
@@ -60,18 +62,16 @@ fun APasswordTextField(
         colors = TextFieldDefaults.textFieldColors(
             textColor = colorResource(id = R.color.colorDarkGray),
             disabledTextColor = Color.Transparent,
+            containerColor = colorResource(id = R.color.colorGray),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-            containerColor = colorResource(id = R.color.colorGray),
-            cursorColor = colorResource(id = R.color.colorLightGreen),
-            ),
+            cursorColor = colorResource(id = R.color.colorLightGreen)
+        ),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password,
             imeAction = ImeAction.Done,
         ),
-        value = password.value,
-        onValueChange = { password.value = it },
         leadingIcon = {
             leadingIcon?.let { icon ->
                 Icon(
@@ -88,12 +88,12 @@ fun APasswordTextField(
             fontWeight = FontWeight.Medium
         ),
         trailingIcon = {
-            val iconImage = if(passwordVisible.value) {
+            val iconImage = if (passwordVisible.value) {
                 Icons.Filled.Visibility
             } else {
                 Icons.Filled.VisibilityOff
             }
-            var description = if(passwordVisible.value) {
+            val description = if (passwordVisible.value) {
                 stringResource(id = R.string.text_hide_password)
             } else {
                 stringResource(id = R.string.text_show_password)
@@ -108,7 +108,7 @@ fun APasswordTextField(
                 )
             }
         },
-        visualTransformation = if(passwordVisible.value) {
+        visualTransformation = if (passwordVisible.value) {
             VisualTransformation.None
         } else {
             PasswordVisualTransformation()

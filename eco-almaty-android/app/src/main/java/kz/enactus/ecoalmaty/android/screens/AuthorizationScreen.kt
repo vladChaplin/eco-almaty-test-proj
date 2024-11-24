@@ -1,4 +1,5 @@
 package kz.enactus.ecoalmaty.android.screens
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,8 +14,13 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -37,11 +43,20 @@ import kz.enactus.ecoalmaty.android.components.inputs.ACustomTextField
 import kz.enactus.ecoalmaty.android.components.inputs.APasswordTextField
 import kz.enactus.ecoalmaty.android.components.text.AHeader
 import kz.enactus.ecoalmaty.android.components.text.ALabel
+import kz.enactus.ecoalmaty.android.services.AuthRequest
+import kz.enactus.ecoalmaty.android.services.authUser
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
+import androidx.lifecycle.viewmodel.compose.viewModel
+import kz.enactus.ecoalmaty.android.models.AuthViewModel
+
 @Composable
-fun AuthorizationScreen(navController: NavController) {
-//    TODO Rest
+fun AuthorizationScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
+    var emailOrLogin by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+    val context = LocalContext.current
+
     Surface(
         color = colorResource(id = R.color.colorWhiteBackground),
         modifier = Modifier
@@ -57,13 +72,9 @@ fun AuthorizationScreen(navController: NavController) {
             ALabel(value = stringResource(id = R.string.text_input_data),
                 colorText = colorResource(id = R.color.colorLightGreen))
             Spacer(modifier = Modifier.height(22.dp))
-            AHeader(
-                value = stringResource(id = R.string.text_email_or_login),
-                fontSz = 12.sp,
-                colorText = colorResource(id = R.color.colorMediumGray)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
             ACustomTextField(
+                value = emailOrLogin,
+                onValueChange = { emailOrLogin = it },
                 leadingIcon = Icons.Default.Person,
                 leadingIconContentDesc = "emailOrLoginIcon",
                 keyboardOptions = KeyboardOptions(
@@ -72,49 +83,35 @@ fun AuthorizationScreen(navController: NavController) {
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
-            AHeader(
-                value = stringResource(id = R.string.text_password),
-                fontSz = 12.sp,
-                colorText = colorResource(id = R.color.colorMediumGray)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
             APasswordTextField(
+                value = password,
+                onValueChange = { password = it },
                 leadingIcon = Icons.Default.Lock,
                 leadingIconContentDesc = "passwordLock",
-                )
-            Spacer(modifier = Modifier.height(16.dp))
-            ClickableText(
-                text = AnnotatedString(stringResource(id = R.string.text_restore_password)),
-                onClick = { navController.navigate(Destination.RestorePasswordScreen.route) },
-                modifier = Modifier.fillMaxWidth(),
-                style = TextStyle(
-                    color = colorResource(id = R.color.colorLightGreen),
-                    fontFamily = montserratFontFamily,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.End
-                )
             )
             Spacer(modifier = Modifier.height(24.dp))
             AButton(
-                onClick = { },
+                onClick = {
+                    val authRequest = AuthRequest(username = emailOrLogin, password = password)
+                    authUser(context, authRequest) { success, authResponse ->
+                        if (success && authResponse != null) {
+                            // Save token to ViewModel
+                            authViewModel.saveToken(authResponse.token)
+
+                            navController.navigate(
+                                "profile_screen/${authResponse.username}/${authResponse.email}/${authResponse.roles.joinToString(",")}"
+                            )
+                        }
+                    }
+                },
                 labelValue = stringResource(id = R.string.text_signin),
                 colorResource(id = R.color.colorGreen),
                 Color.White
             )
-            Spacer(modifier = Modifier.height(24.dp))
-            AGoogleButton(
-                onClick = { },
-            )
-            Spacer(modifier = Modifier.height(39.dp))
-            AClickableText(
-                valueText = stringResource(id = R.string.text_link_signup),
-                onClick = { navController.navigate(Destination.SignUpScreen.route) },
-                colorText = colorResource(id = R.color.colorGreen),
-            )
         }
     }
 }
+
 
 @Preview
 @Composable

@@ -21,15 +21,15 @@ import androidx.compose.ui.unit.sp
 import kz.enactus.ecoalmaty.android.R
 import kz.enactus.ecoalmaty.android.ui.theme.montserratFontFamily
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 fun ASimpleTextField(
     keyboardOptions: KeyboardOptions,
-    backgroundColorCust: Color = colorResource(id = R.color.colorGray)
+    backgroundColor: Color = colorResource(id = R.color.colorGray)
 ) {
-    val textValue = remember {
-        mutableStateOf("")
-    }
+    val textValue = remember { mutableStateOf("") }
+
     TextField(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +40,7 @@ fun ASimpleTextField(
                 shape = RoundedCornerShape(size = 8.dp),
             )
             .background(
-                color = backgroundColorCust,
+                color = backgroundColor,
                 shape = RoundedCornerShape(size = 8.dp)
             ),
         colors = TextFieldDefaults.textFieldColors(
@@ -49,9 +49,9 @@ fun ASimpleTextField(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-            containerColor = backgroundColorCust,
+            containerColor = backgroundColor,
             cursorColor = colorResource(id = R.color.colorLightGreen),
-            ),
+        ),
         keyboardOptions = keyboardOptions,
         value = textValue.value,
         onValueChange = { textValue.value = it },

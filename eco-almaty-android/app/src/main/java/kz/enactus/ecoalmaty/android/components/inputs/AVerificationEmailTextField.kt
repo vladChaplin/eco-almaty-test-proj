@@ -14,6 +14,8 @@ import androidx.compose.material.icons.filled.PriorityHigh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -24,10 +26,14 @@ import kz.enactus.ecoalmaty.android.R
 
 @Composable
 fun AVerificationEmailTextField() {
+    val email = remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
         ACustomTextField(
+            value = email.value,
+            onValueChange = { email.value = it },
             leadingIcon = Icons.Filled.Email,
             leadingIconContentDesc = "emailIcon",
             keyboardOptions = KeyboardOptions(
@@ -36,6 +42,7 @@ fun AVerificationEmailTextField() {
             ),
             backgroundColorCust = colorResource(id = R.color.colorWhiteBackground)
         )
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -53,7 +60,7 @@ fun AVerificationEmailTextField() {
             )
             Spacer(modifier = Modifier.width(18.dp))
             Text(
-                text = stringResource(id = R.string.text_message_mail_not_reg) ,
+                text = stringResource(id = R.string.text_message_mail_not_reg),
                 color = colorResource(id = R.color.colorDarkGray),
                 modifier = Modifier
                     .padding(top = 15.dp, bottom = 16.dp)

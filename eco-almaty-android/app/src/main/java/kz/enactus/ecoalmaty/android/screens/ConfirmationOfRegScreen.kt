@@ -1,5 +1,6 @@
 package kz.enactus.ecoalmaty.android.screens
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +28,11 @@ import kz.enactus.ecoalmaty.android.components.buttons.AButton
 import kz.enactus.ecoalmaty.android.components.inputs.ASimpleTextField
 import kz.enactus.ecoalmaty.android.components.text.AHeader
 import kz.enactus.ecoalmaty.android.components.text.ALabel
+import androidx.compose.ui.Alignment
+import androidx.compose.material3.Text
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun ConfirmationOfRegScreen(navController: NavController) {
@@ -38,50 +44,40 @@ fun ConfirmationOfRegScreen(navController: NavController) {
             .padding(32.dp)
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(50.dp))
-            AHeader(
-                value = stringResource(id = R.string.text_confirm),
-                fontSz = 24.sp
+            // Заголовок "Успешная регистрация!"
+            Text(
+                text = "Успешная регистрация!",
+                color = colorResource(id = R.color.colorLightGreen),
+                style = TextStyle(
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            ALabel(
-                value = stringResource(id = R.string.text_sent_code_email_address_to_confirm),
-                colorText = colorResource(id = R.color.colorLightGreen),
+            Spacer(modifier = Modifier.height(16.dp))
+            // Подсказка ниже заголовка
+            Text(
+                text = "Для того, чтобы продолжить работу с приложением, необходимо войти, нажав на кнопку \"Войти\" ниже.",
+                color = colorResource(id = R.color.colorMediumGray),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(30.dp))
-            AHeader(
-                value = stringResource(id = R.string.text_code),
-                fontSz = 12.sp,
-                colorText = colorResource(id = R.color.colorMediumGray)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            ASimpleTextField(keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Next
-            ))
-            Spacer(modifier = Modifier.height(15.dp))
-            AClickableText(
-                startText = "",
-                valueText = stringResource(id = R.string.text_resend_code),
-                onClick = { navController.navigate(Destination.SignUpScreen.route) },
-                colorText = colorResource(id = R.color.colorGreen),
-            )
-            ACountdownTimer()
-            Spacer(modifier = Modifier.height(40.dp))
+            // Кнопка "Войти"
             AButton(
-                onClick = { },
-                labelValue = stringResource(id = R.string.text_complete_reg),
+                onClick = { navController.navigate(Destination.AuthorizationScreen.route) },
+                labelValue = stringResource(id = R.string.text_signin),
                 colorResource(id = R.color.colorGreen),
-                Color.White,
-            )
-            Spacer(modifier = Modifier.height(18.dp))
-            AClickableText(
-                startText = stringResource(id = R.string.text_code_doesnt_come),
-                valueText = stringResource(id = R.string.text_change_email_address),
-                onClick = { navController.navigate(Destination.SignUpScreen.route) },
-                colorText = colorResource(id = R.color.colorGreen),
+                Color.White
             )
         }
     }
@@ -89,7 +85,7 @@ fun ConfirmationOfRegScreen(navController: NavController) {
 
 @Preview
 @Composable
-fun DefaultPreviewOfConfirmationOfRegScreen() {
+fun DefaultPreviewOfRegistrationSuccessScreen() {
     val navControllerFake = rememberNavController()
     ConfirmationOfRegScreen(navController = navControllerFake)
 }
