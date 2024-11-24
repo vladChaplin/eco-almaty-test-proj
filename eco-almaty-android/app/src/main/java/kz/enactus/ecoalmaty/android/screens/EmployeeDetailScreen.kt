@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import kz.enactus.ecoalmaty.android.R
+import kz.enactus.ecoalmaty.android.components.inputs.EmployeeEditForm
 import kz.enactus.ecoalmaty.android.models.Employee
 import kz.enactus.ecoalmaty.android.services.getEmployeeById
 
@@ -22,9 +23,10 @@ import kz.enactus.ecoalmaty.android.services.getEmployeeById
 @Composable
 fun EmployeeDetailScreen(navController: NavController, employeeId: String, token: String) {
     var employee by remember { mutableStateOf<Employee?>(null) }
+    var isEditing by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
-    // Получение данных сотрудника
+    // Fetching employee details
     LaunchedEffect(employeeId) {
         getEmployeeById(token, employeeId) { success, data ->
             if (success) {
@@ -41,20 +43,37 @@ fun EmployeeDetailScreen(navController: NavController, employeeId: String, token
             .padding(16.dp)
     ) {
         Column {
-            if (employee != null) {
-                Text(text = "ФИО: ${employee?.firstName} ${employee?.lastName} ${employee?.fatherName}")
-                Text(text = "Дата рождения: ${employee?.dateOfBirth}")
-                Text(text = "Дата приема на работу: ${employee?.hireDate}")
-                Text(text = "Телефон: ${employee?.phone}")
-                Text(text = "Образование: ${employee?.education}")
-                Text(text = "Статус: ${employee?.status}")
-            } else {
-                Text(text = "Загрузка данных сотрудника...")
-            }
+            if (!isEditing) {
+                if (employee != null) {
+                    Text(text = "ФИО: ${employee?.firstName} ${employee?.lastName} ${employee?.fatherName}")
+                    Text(text = "Дата рождения: ${employee?.dateOfBirth}")
+                    Text(text = "Дата приема на работу: ${employee?.hireDate}")
+                    Text(text = "Телефон: ${employee?.phone}")
+                    Text(text = "Образование: ${employee?.education}")
+                    Text(text = "Статус: ${employee?.status}")
+                } else {
+                    Text(text = "Загрузка данных сотрудника...")
+                }
 
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = { navController.popBackStack() }) {
-                Text(text = "Назад")
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(onClick = { navController.popBackStack() }) {
+                    Text(text = "Назад")
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(onClick = { isEditing = true }) {
+                    Text(text = "Изменить")
+                }
+            } else {
+                EmployeeEditForm(
+                    employee = employee,
+                    token = token,
+                    employeeId = employeeId,
+                    onCancel = { isEditing = false },
+                    onSave = {
+                        isEditing = false
+                        navController.popBackStack() // Return to the previous screen after saving
+                    }
+                )
             }
         }
     }

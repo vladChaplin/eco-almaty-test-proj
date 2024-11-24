@@ -109,5 +109,46 @@ fun getEmployeeById(token: String, employeeId: String, onResult: (Boolean, Emplo
     })
 }
 
+fun updateEmployee(
+    context: Context,
+    token: String,
+    employeeId: String,
+    changes: Map<String, String>,
+    onResult: (Boolean, String) -> Unit
+) {
+    val client = OkHttpClient()
+    val gson = Gson()
+    val jsonBody = gson.toJson(changes)
+    val body = jsonBody.toRequestBody("application/json".toMediaTypeOrNull())
+
+    val request = Request.Builder()
+        .url("http://10.0.2.2:8080/api/employees/$employeeId")
+        .addHeader("Authorization", "Bearer $token")
+        .patch(body)
+        .build()
+
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            Handler(Looper.getMainLooper()).post {
+                onResult(false, "Ошибка: ${e.message}")
+            }
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            val responseBody = response.body?.string()
+            if (response.isSuccessful) {
+                Handler(Looper.getMainLooper()).post {
+                    onResult(true, "Данные сотрудника успешно обновлены")
+                }
+            } else {
+                Handler(Looper.getMainLooper()).post {
+                    val errorMessage = responseBody ?: "Неизвестная ошибка"
+                    onResult(false, "Ошибка: ${response.message}. Детали: $errorMessage")
+                }
+            }
+        }
+    })
+}
+
 
 
