@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+//    implementation("androidx.compose.material3:material3-android:1.3.1")
     val nav_version = "2.6.0"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 

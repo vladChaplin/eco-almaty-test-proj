@@ -150,5 +150,32 @@ fun updateEmployee(
     })
 }
 
+fun deleteEmployee(token: String, employeeId: String, onResult: (Boolean) -> Unit) {
+    val client = OkHttpClient()
+    val request = Request.Builder()
+        .url("http://10.0.2.2:8080/api/employees/$employeeId")
+        .addHeader("Authorization", "Bearer $token")
+        .delete()
+        .build()
+
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            Handler(Looper.getMainLooper()).post {
+                onResult(false)
+            }
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            Handler(Looper.getMainLooper()).post {
+                if (response.isSuccessful) {
+                    onResult(true)
+                } else {
+                    onResult(false)
+                }
+            }
+        }
+    })
+}
+
 
 
